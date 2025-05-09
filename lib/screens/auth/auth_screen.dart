@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hungerzone/screens/auth/auth_email.dart';
 
 import '../splashs/splash_screen.dart';
 
@@ -39,7 +40,7 @@ class _AuthScreenState extends State<AuthScreen> {
                     ),
                   ),
                 ),
-                Image.asset('assets/auth.png', height: 280),
+                Center(child: Image.asset('assets/auth.png', height: 280)),
               ],
             ),
           ),
@@ -56,40 +57,146 @@ class _AuthScreenState extends State<AuthScreen> {
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                spacing: 40,
                 children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(height: 10),
+                        Text(
+                          'Sign up or Log In',
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                        SizedBox(height: 10),
+                        Text(
+                          'Select your preferred method to continue',
+                          style: TextStyle(fontSize: 12),
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: 20),
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                          context, MaterialPageRoute(builder: (context) => AuthEmailScreen()));
+                    },
+                    child: Container(
+                      padding: EdgeInsets.symmetric(horizontal: 20),
+                      height: 58,
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                        color: Color(0xFFFFA261),
+
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Image.asset('assets/google_icon.webp', width: 25),
+                          SizedBox(width: 10),
+                          Text(
+                            'Continue with Google',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 15,
+                            ),
+                          ),
+                          SizedBox(width: 20),
+                        ],
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 15),
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                          context, MaterialPageRoute(builder: (context) => AuthEmailScreen()));
+                    },
+                    child: Container(
+                      padding: EdgeInsets.symmetric(horizontal: 20),
+                      height: 58,
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                        color: Color(0xFFFFA261),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Image.asset('assets/facebook_icon.png', width: 40),
+                          SizedBox(width: 10),
+                          Text(
+                            'Continue with facebook',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 15,
+                            ),
+                          ),
+                          SizedBox(width: 20),
+                        ],
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 15),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
+                      Expanded(child: Divider(color: Colors.black38)),
                       Text(
-                        'Sign up or Log In',
+                        '  Or  ',
                         style: TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.black38,
                         ),
                       ),
-                      Text(
-                        'Select your preferred method to continue',
-                        style: TextStyle(fontSize: 16),
-                      ),
+                      Expanded(child: Divider(color: Colors.black38)),
                     ],
                   ),
-
-                  ElevatedButton.icon(
-                    icon: Icon(Icons.arrow_forward_outlined),
-                    onPressed: () {},
-                    label: Text('Next'),
+                  SizedBox(
+                    height: 15,
                   ),
-                  ElevatedButton.icon(
-                    icon: Icon(Icons.facebook),
-                    onPressed: () {},
-                    label: Text('continue with facebook'),
-                  ),
-                  ElevatedButton.icon(
-                    icon: Icon(Icons.login),
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                          context, MaterialPageRoute(builder: (context) => AuthEmailScreen()));
+                    },
+                    child: Container(
+                      padding: EdgeInsets.symmetric(horizontal: 20),
+                      height: 58,
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                        color: Color(0xFFFFA261),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Icon(
+                            size: 28,
+                            Icons.email_outlined,
+                            color: Colors.white,
 
-                    onPressed: () {},
-                    label: Text('continue with google'),
+                          ),
+                          SizedBox(width: 10),
+                          Text(
+                            'Continue with Email',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 15,
+                            ),
+                          ),
+                          SizedBox(width: 20),
+                        ],
+                      ),
+                    ),
                   ),
                 ],
               ),

@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-
-import 'core/theme/app_theme.dart';
 import 'screens/splashs/splash_screen.dart';
 
 void main() {
@@ -16,7 +14,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Hunger Zone',
-      theme: AppTheme.themeData,
       home: SplashScreen(),
     );
   }
