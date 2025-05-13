@@ -16,7 +16,7 @@ class _EnjoyYourMealScreenState extends State<EnjoyYourMealScreen> {
       body: Column(
         children: [
           Container(
-            height: MediaQuery.of(context).size.height / 1.6,
+            height: MediaQuery.sizeOf(context).height / 1.6,
             width: double.infinity,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,

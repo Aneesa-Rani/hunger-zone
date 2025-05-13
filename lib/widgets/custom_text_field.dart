@@ -5,6 +5,7 @@ class CustomTextField extends StatefulWidget {
   final String labelText;
   final bool noIcon;
   final Function(String)? onChanged;
+  final TextInputType keyboardType;
 
   const CustomTextField({
     super.key,
@@ -12,6 +13,7 @@ class CustomTextField extends StatefulWidget {
     required this.labelText,
     this.noIcon = true,
     this.onChanged,
+    this.keyboardType = TextInputType.text, // Default to text if not specified
   });
 
   @override
@@ -27,6 +29,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
       obscureText: isObsecure,
       onChanged: widget.onChanged,
       controller: widget.controller,
+      keyboardType: widget.keyboardType,
       decoration: InputDecoration(
         suffixIconColor: const Color(0xFFFFA261),
         suffixIcon: widget.noIcon

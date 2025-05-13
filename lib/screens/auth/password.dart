@@ -1,36 +1,36 @@
 import 'package:flutter/material.dart';
-import 'package:hungerzone/screens/auth/password.dart';
-import 'package:hungerzone/widgets/custom_text_field.dart';
+import 'package:hungerzone/screens/auth/user_information_screen.dart';
+import '../../widgets/custom_text_field.dart';
 
-class AuthEmailScreen extends StatefulWidget {
-  const AuthEmailScreen({super.key});
+class PasswordScreen extends StatefulWidget {
+  const PasswordScreen({super.key});
 
   @override
-  State<AuthEmailScreen> createState() => _AuthEmailScreenState();
+  State<PasswordScreen> createState() => _PasswordScreenState();
 }
 
-class _AuthEmailScreenState extends State<AuthEmailScreen> {
-  final TextEditingController emailController = TextEditingController();
-  String emailText = '';
+class _PasswordScreenState extends State<PasswordScreen> {
+  final TextEditingController passController = TextEditingController();
+  String passText = '';
 
   @override
   void dispose() {
-    emailController.dispose();
+    passController.dispose();
     super.dispose();
   }
 
-  void goToPasswordScreen() {
-    if (emailText.isNotEmpty) {
+  void goToUserInfoScreen() {
+    if (passText.isNotEmpty) {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => const PasswordScreen()),
+        MaterialPageRoute(builder: (context) => const UserInformationScreen()),
       );
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    final bool isEmailEmpty = emailText.isEmpty;
+    final bool isPassEmpty = passText.isEmpty;
 
     return Scaffold(
       appBar: AppBar(
@@ -38,11 +38,11 @@ class _AuthEmailScreenState extends State<AuthEmailScreen> {
         foregroundColor: const Color(0xFFFFA261),
         actions: [
           TextButton(
-            onPressed: isEmailEmpty ? null : goToPasswordScreen,
+            onPressed: isPassEmpty ? null : goToUserInfoScreen,
             child: Text(
               'Continue',
               style: TextStyle(
-                color: isEmailEmpty ? Colors.grey[400] : const Color(0xFFFFA261),
+                color: isPassEmpty ? Colors.grey[400] : const Color(0xFFFFA261),
               ),
             ),
           ),
@@ -56,15 +56,16 @@ class _AuthEmailScreenState extends State<AuthEmailScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 15, bottom: 20),
-                    child: Image.asset(
-                      'assets/email.png',
-                      width: 70,
+                  const Padding(
+                    padding: EdgeInsets.only(left: 15, bottom: 20),
+                    child: Icon(
+                      Icons.password,
+                      size: 60,
+                      color: Color(0xFFFFA261),
                     ),
                   ),
                   const Text(
-                    'What\'s your email?',
+                    'Enter your password',
                     style: TextStyle(
                       fontSize: 25,
                       fontWeight: FontWeight.bold,
@@ -72,23 +73,24 @@ class _AuthEmailScreenState extends State<AuthEmailScreen> {
                   ),
                   const SizedBox(height: 20),
                   const Text(
-                    'We\'ll check if you have an account',
+                    'Enter your password to continue an account',
                     style: TextStyle(fontSize: 14),
                   ),
                   const SizedBox(height: 30),
                   CustomTextField(
-                    controller: emailController,
-                    labelText: 'Email',
-                    keyboardType: TextInputType.emailAddress,
+                    controller: passController,
+                    labelText: 'Password',
+                    noIcon: false,
+                    keyboardType: TextInputType.visiblePassword,
                     onChanged: (value) {
                       setState(() {
-                        emailText = value;
+                        passText = value;
                       });
                     },
                   ),
                   const SizedBox(height: 30),
                   InkWell(
-                    onTap: goToPasswordScreen,
+                    onTap: goToUserInfoScreen,
                     child: Container(
                       height: 58,
                       width: double.infinity,
@@ -99,7 +101,6 @@ class _AuthEmailScreenState extends State<AuthEmailScreen> {
                       child: const Center(
                         child: Text(
                           'Continue',
-                          textAlign: TextAlign.center,
                           style: TextStyle(
                             color: Colors.black,
                             fontSize: 18,
