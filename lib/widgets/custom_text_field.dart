@@ -1,14 +1,61 @@
 import 'package:flutter/material.dart';
+
 class CustomTextField extends StatefulWidget {
-  const CustomTextField({super.key});
+  final TextEditingController? controller;
+  final String labelText;
+  final bool noIcon;
+  final Function(String)? onChanged;
+
+  const CustomTextField({
+    super.key,
+    this.controller,
+    required this.labelText,
+    this.noIcon = true,
+    this.onChanged,
+  });
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
 }
 
 class _CustomTextFieldState extends State<CustomTextField> {
+  bool isObsecure = false;
+
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return TextFormField(
+      obscureText: isObsecure,
+      onChanged: widget.onChanged,
+      controller: widget.controller,
+      decoration: InputDecoration(
+        suffixIconColor: const Color(0xFFFFA261),
+        suffixIcon: widget.noIcon
+            ? null
+            : IconButton(
+          onPressed: () {
+            setState(() {
+              isObsecure = !isObsecure;
+            });
+          },
+          icon: Icon(
+            isObsecure ? Icons.visibility : Icons.visibility_off_sharp,
+          ),
+        ),
+        labelText: widget.labelText,
+        contentPadding: const EdgeInsets.all(15),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+          borderSide: BorderSide(
+            color: Colors.grey[200]!,
+          ),
+        ),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+          borderSide: BorderSide(
+            color: Colors.grey[200]!,
+          ),
+        ),
+      ),
+    );
   }
 }
